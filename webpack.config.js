@@ -1,11 +1,9 @@
 const path = require('path'),
       HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
-module.exports = {
+let conf = {
     entry: {
         index: ['./src/index.js'],
-        another: ['./src/another.js'],
     },
 
     output: {
@@ -15,7 +13,6 @@ module.exports = {
         clean: true,
     },
     target: ['web', 'es5'],
-    devtool: process.env.NODE_ENV !== 'production' ? 'eval-cheap-module-source-map' : false,
     devServer: {
         static: './',
     },
@@ -37,3 +34,13 @@ module.exports = {
         ]
     }
 };
+
+module.exports = (env, argv) => {
+    console.log('argv', argv)
+    if(argv.mode === 'development'){
+        conf.devtool = 'eval-cheap-module-source-map';
+    } else {
+        conf.devtool = 'source-map'
+    }
+    return conf
+}
