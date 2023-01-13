@@ -1,19 +1,36 @@
 function trimWords(str){
-    return str.trim()
+    return str?.trim()
 }
 export function wordsCount(str){
     str =  trimWords(str)
-    //console.log(str.length)
-}
-
-export function getWords(str){
+    let count = 0
     let words = trimWords(str) + ' ',
         pos = 0,
-        foundPos = words.indexOf(' ', pos)
+        foundPos = words.indexOf(' ', pos);
 
-    while(foundPos !== -1){
-        console.log(foundPos)
-        foundPos = words.indexOf(' ', foundPos + 1)
+    while(true){
+        if (foundPos === -1) break;
+        pos = foundPos
+        pos++
+        foundPos = words.indexOf(' ', pos)
+        count++
     }
+    return count
+}
+
+export function* getWords(str){
+    let words = trimWords(str) + ' ',
+        pos = 0,
+        foundPos = words.indexOf(' ', pos);
+    while(foundPos !== -1){
+        let a = words.substring(pos, foundPos)
+        a = a.replace(/!/, '')
+        pos = foundPos
+        pos++
+        foundPos = words.indexOf(' ', pos)
+        yield a
+    }
+
+
 }
 
