@@ -28,7 +28,6 @@ export function* getWords(str){
         pos = foundPos + 1
         foundPos = words.indexOf(' ', pos)
     }
-
-
+    
 }
 
