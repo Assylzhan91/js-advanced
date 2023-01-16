@@ -21,14 +21,12 @@ export function wordsCount(str){
 export function* getWords(str){
     let words = trimWords(str) + ' ',
         pos = 0,
-        foundPos = words.indexOf(' ', pos);
+        foundPos = words.indexOf(' ');
+
     while(foundPos !== -1){
-        let a = words.substring(pos, foundPos)
-        a = a.replace(/!/, '')
-        pos = foundPos
-        pos++
+        yield words.substring(pos, foundPos)
+        pos = foundPos + 1
         foundPos = words.indexOf(' ', pos)
-        yield a
     }
 
 
