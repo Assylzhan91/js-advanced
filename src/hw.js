@@ -19,15 +19,16 @@ export function wordsCount(str){
 }
 
 export function* getWords(str){
-    let words = trimWords(str) + ' ',
-        pos = 0,
-        foundPos = words.indexOf(' ');
 
-    while(foundPos !== -1){
-        yield words.substring(pos, foundPos)
-        pos = foundPos + 1
-        foundPos = words.indexOf(' ', pos)
+    if(str.length){
+        let words = trimWords(str) + ' ',
+            pos = 0,
+            foundPos = words.indexOf(' ');
+
+        while(foundPos !== -1){
+            yield words.substring(pos, foundPos++)
+            foundPos = words.indexOf(' ', pos = foundPos)
+        }
     }
-    
 }
 
