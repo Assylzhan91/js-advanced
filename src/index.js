@@ -1,12 +1,26 @@
-import { getWords, wordsCount } from './hw'
+function mult(x, y){
+    return x * y
+}
 
-window.addEventListener('load', function (){
-    let str = '  Всем привет! Ура ура!';
-    let count = wordsCount(str)
-
-    let a =  getWords(str)
-
-    for (const aElement of a) {
-        console.log(aElement)
+let math = {
+    sum(x, y){
+        console.log(this)
+        return x + y
+    },
+    mult(x, y){
+        console.log(this)
+        return x * y
+    },
+    some: ()=> {
+        console.log('some', this)
+        return 1
     }
-})
+}
+
+let { sum } = math
+let res = sum.bind(math)
+console.log(res(1, 2))
+
+
+
+
