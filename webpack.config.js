@@ -9,7 +9,7 @@ let conf = {
     output: {
         filename: '[contenthash].bundle.js',
         path: path.join(__dirname, 'dist'),
-        publicPath: '',
+        publicPath: './',
         clean: true,
     },
     target: ['web', 'es5'],
