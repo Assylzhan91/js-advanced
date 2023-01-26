@@ -14,7 +14,7 @@ let conf = {
     },
     target: ['web', 'es5'],
     devServer: {
-        static: './src',
+        static: './',
     },
 
     plugins: [
