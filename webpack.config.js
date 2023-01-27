@@ -9,12 +9,12 @@ let conf = {
     output: {
         filename: '[contenthash].bundle.js',
         path: path.join(__dirname, 'dist'),
-        publicPath: './',
+        publicPath: '',
         clean: true,
     },
     target: ['web', 'es5'],
     devServer: {
-        static: './',
+        static: './src',
     },
 
     plugins: [
@@ -38,8 +38,10 @@ let conf = {
 module.exports = (env, argv) => {
     console.log('argv', argv)
     if(argv.mode === 'development'){
+        conf.target = ['web', 'es5']
         conf.devtool = 'eval-cheap-module-source-map';
     } else {
+        conf.target = 'web'
         conf.devtool = 'source-map'
     }
     return conf
